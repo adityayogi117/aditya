@@ -1,0 +1,113 @@
+/* =========================
+   ADTYAYGI.TECH - STYLE
+   Ubah warna dan ukuran di :root
+   ========================= */
+:root {
+  --bg: #020916;          /* Warna background utama */
+  --cyan: #00cfff;        /* Warna biru neon */
+  --blue: #087cff;        /* Warna biru terang */
+  --purple: #8b42ff;      /* Warna ungu neon */
+  --white: #f4f8ff;       /* Warna teks utama */
+  --muted: #b9c7dc;       /* Warna teks paragraf */
+  --font: "Inter", Arial, sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { min-height: 100vh; background: var(--bg); color: var(--white); font-family: var(--font); }
+
+/* AREA UTAMA: dua kolom dalam satu layar */
+.hero {
+  min-height: 100vh; position: relative; overflow: hidden;
+  display: grid; grid-template-columns: 1.05fr .95fr;
+  align-items: center; gap: 3vw; padding: 5vh 6vw;
+  background:
+    radial-gradient(circle at 28% 50%, rgba(0,110,255,.18), transparent 38%),
+    radial-gradient(circle at 85% 75%, rgba(100,35,210,.12), transparent 35%),
+    linear-gradient(120deg, #020713, #061329 55%, #020713);
+}
+.hero::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .2;
+  background-image: linear-gradient(rgba(0,160,255,.18) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(0,160,255,.18) 1px, transparent 1px);
+  background-size: 52px 52px;
+  mask-image: linear-gradient(90deg, black, transparent 95%);
+}
+
+/* BAGIAN KIRI: GAMBAR TEKNOLOGI DAN ORBIT BERPUTAR */
+.visual { height: min(78vh, 720px); min-height: 360px; position: relative; display: grid; place-items: center; }
+.tech-image {
+  width: 112%; max-width: 760px; position: relative; z-index: 2;
+  filter: drop-shadow(0 0 22px rgba(0,145,255,.3));
+  animation: float 5s ease-in-out infinite;
+  -webkit-mask-image: linear-gradient(90deg, black 75%, transparent 100%);
+  mask-image: linear-gradient(90deg, black 75%, transparent 100%);
+}
+.orbit {
+  position: absolute; z-index: 3; width: 78%; height: 27%;
+  border: 2px solid rgba(0,207,255,.75); border-radius: 50%;
+  box-shadow: 0 0 12px rgba(0,207,255,.55), inset 0 0 12px rgba(0,207,255,.2);
+  pointer-events: none;
+}
+.orbit-one { transform: rotate(-19deg); animation: spin 12s linear infinite; }
+.orbit-two { width: 88%; height: 35%; border-color: rgba(139,66,255,.75); transform: rotate(28deg); animation: spin-reverse 17s linear infinite; }
+.orbit-three { width: 65%; height: 20%; border-color: rgba(0,120,255,.8); transform: rotate(68deg); animation: spin 22s linear infinite; }
+.visual-tag, .visual-caption { position: absolute; z-index: 4; color: #9bb6d5; font-size: .62rem; letter-spacing: .17em; }
+.visual-tag { top: 3%; left: 2%; }
+.visual-tag span, .footer-note span { display: inline-block; width: 7px; height: 7px; margin-right: 8px; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 10px var(--cyan); }
+.visual-caption { bottom: 4%; left: 3%; }
+.visual-caption b { color: var(--cyan); }
+
+/* BAGIAN KANAN: IDENTITAS DAN PERKENALAN */
+.intro { position: relative; z-index: 5; max-width: 620px; padding: 25px 0; }
+.greeting { display: flex; align-items: center; gap: 18px; color: #d7e3f4; font-size: clamp(1.35rem, 2.3vw, 2rem); margin-bottom: 12px; }
+.line { width: 120px; height: 1px; background: linear-gradient(90deg, var(--cyan), transparent); }
+h1 { font-size: clamp(2.8rem, 5.2vw, 5.5rem); line-height: .98; letter-spacing: -.055em; font-weight: 800; margin-bottom: 25px; }
+h1 span { color: var(--cyan); text-shadow: 0 0 25px rgba(0,207,255,.25); }
+.major {
+  display: inline-flex; align-items: center; gap: 13px; padding: 12px 17px;
+  border: 1px solid var(--cyan); color: #b8f5ff; font-size: .78rem;
+  font-weight: 700; font-style: italic; letter-spacing: .1em;
+  background: linear-gradient(90deg, rgba(0,207,255,.15), rgba(0,207,255,.02));
+  clip-path: polygon(8% 0, 94% 0, 100% 50%, 94% 100%, 0 100%, 5% 50%);
+  margin-bottom: 27px;
+}
+.major span { color: var(--cyan); font-size: 1.05rem; }
+.description { text-align:justify; max-width: 490px; color: var(--muted); font-size: clamp(.9rem, 1.15vw, 1.05rem); line-height: 1.85; margin-bottom: 32px; }
+.button {
+  display: inline-flex; align-items: center; gap: 25px; padding: 13px 22px;
+  color: var(--white); text-decoration: none; font-weight: 600; font-size: .9rem;
+  border: 1px solid var(--cyan); background: rgba(0,150,255,.1);
+  box-shadow: 0 0 16px rgba(0,207,255,.18); transition: .25s;
+  clip-path: polygon(9% 0, 91% 0, 100% 50%, 91% 100%, 0 100%, 5% 50%);
+}
+.button span { color: var(--cyan); font-size: 1.35rem; }
+.button:hover { background: rgba(0,207,255,.22); box-shadow: 0 0 28px rgba(0,207,255,.4); transform: translateY(-3px); }
+.footer-note { display: flex; align-items: center; gap: 8px; margin-top: 58px; color: #6f8aaa; font-size: .58rem; letter-spacing: .14em; }
+.footer-note small { margin-left: auto; color: #7892b1; font-size: .55rem; }
+.corner { position: absolute; width: 75px; height: 75px; pointer-events: none; }
+.top-left { top: 0; left: 0; border-top: 1px solid var(--cyan); border-left: 1px solid var(--cyan); }
+.bottom-right { right: 0; bottom: 0; border-right: 1px solid var(--purple); border-bottom: 1px solid var(--purple); }
+
+/* ANIMASI OTOMATIS */
+@keyframes spin { from { rotate: 0deg; } to { rotate: 360deg; } }
+@keyframes spin-reverse { from { rotate: 360deg; } to { rotate: 0deg; } }
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+
+/* TAMPILAN TABLET DAN HP */
+@media (max-width: 850px) {
+  .hero { grid-template-columns: 1fr; gap: 0; padding: 35px 7vw 55px; }
+  .visual { height: 52vh; min-height: 300px; order: 1; }
+  .tech-image { width: min(100%, 570px); }
+  .intro { order: 2; margin: 0 auto; text-align: center; }
+  .greeting { justify-content: center; }
+  .description { margin-left: auto; margin-right: auto; }
+  .footer-note { justify-content: center; flex-wrap: wrap; }
+  .footer-note small { margin-left: 10px; }
+}
+@media (max-width: 480px) {
+  .visual { height: 85vw; min-height: 250px; }
+  h1 { font-size: clamp(2.5rem, 12vw, 3.5rem); }
+  .major { font-size: .62rem; padding: 10px 13px; }
+  .description { font-size: .88rem; }
+  .footer-note { margin-top: 35px; font-size: .5rem; }
+}
